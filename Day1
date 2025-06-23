@@ -1,0 +1,69 @@
+--Droping The Database Education if the Database is exist
+DROP DATABASE IF EXISTS EDUCATION;
+
+
+--Creating The Database Education
+CREATE DATABASE EDUCATION;
+
+
+--Droping Table Students
+Drop table if exists STUDENTS;
+
+--Creating Table Students
+CREATE TABLE STUDENTS(
+Student_id INT PRIMARY KEY,
+First_Name VARCHAR(100),
+Last_Name VARCHAR(100),
+Date_of_birth DATE,
+Gender VARCHAR(100),
+EMail VARCHAR(100),
+Phone INT,
+Address VARCHAR(250)
+);
+
+--Droping Table Teachers
+Drop table if exists TEACHERS;
+
+--Creating Table Teachers
+CREATE TABLE TEACHERS(
+Teacher_id INT PRIMARY KEY,
+First_Name VARCHAR(100),
+Last_Name VARCHAR(100),
+Gender VARCHAR(100),
+EMail VARCHAR(100),
+Department VARCHAR(100),
+Phone INT
+);
+
+
+--Droping Table Course
+Drop table if exists COURSE;
+
+--Creating Table Course
+CREATE TABLE COURSE(
+Course_id INT PRIMARY KEY,
+Course_Name VARCHAR(100),
+Credits INT,
+Teacher_id INT REFERENCES TEACHERS(Teacher_id)  --Foreign Key
+);
+
+--Droping Table Enrollement
+Drop table if exists ENROLLEMENTS;
+
+--Creating Tables Enrollements
+CREATE TABLE ENROLLEMENTS(
+Enrollement_id INT PRIMARY KEY,
+Student_id INT REFERENCES STUDENTS(Student_id), --Foreign Key
+Teacher_id INT REFERENCES TEACHERS(Teacher_id),  --Foreign Key
+Enroll_Date DATE
+);
+
+--Droping Table Grades
+Drop table if exists GRADES;
+
+--Creating Tables Gread
+CREATE TABLE GRADES(
+Grade_id INT PRIMARY KEY,
+Enrollement_id INT REFERENCES ENROLLEMENTS(Enrollement_id),--Foreign Key
+Grade VARCHAR(2)
+);
