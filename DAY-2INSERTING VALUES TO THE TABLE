@@ -1,0 +1,81 @@
+--DAY-2 INSERTING VALUES TO THE TABLE
+--Inserting values in to the Student Table
+INSERT INTO STUDENTS(Student_id,First_Name,Last_Name,Date_of_birth,Gender,EMail,Phone,Address)
+VALUES(1,'Aarav', 'Sharma', '2003-06-12', 'Male', 'aarav.sharma@example.com', 9873287328, 'Hyderabad'),
+(2,'Isha', 'Patel', '2002-08-25', 'Female', 'isha.patel@example.com', 9876543210, 'Ahmedabadt'),
+(3,'Rahul', 'Verma', '2001-11-04', 'Male', 'rahul.verma@example.com', 8097654321, 'Lucknow'),
+(4,'Sneha', 'Reddy', '2003-03-19', 'Female', 'sneha.reddy@example.com', 7098654321, 'Secunderabad'),
+(5,'Kabir', 'Mehra', '2002-05-07', 'Male', 'kabir.mehra@example.com', 8907654321, 'Delhi'),
+(6,'Ananya', 'Joshi', '2004-01-28', 'Female', 'ananya.joshi@example.com', 7698054321, 'Pune'),
+(7,'Vikram', 'Singh', '2001-07-30', 'Male', 'vikram.singh@example.com', 7898654321, 'Jaipur'),
+(8,'Nithin', 'Reddy', '2003-12-15', 'Female', 'pooja.naik@example.com', 9878906543, 'Panaji'),
+(9,'Yash', 'Thakur', '2002-09-10', 'Male', 'yash.thakur@example.com', 8878956342, 'Bhopal'),
+(10,'Meera', 'Nair', '2004-02-05', 'Female', 'meera.nair@example.com', 9778866932, 'Kochi');
+
+
+-- RETRIVING DATA FROM STUDENT TABLE
+SELECT * FROM STUDENTS;
+
+--Inserting values in to the Teachers Table
+INSERT INTO TEACHERS(Teacher_id,First_Name,Last_Name,Gender,EMail,Department,Phone)
+VALUES(1,'Anil', 'Kumar', 'Male', 'anil.kumar@college.edu', 'Computer Science', 9876543210),
+(2,'Meena', 'Rao', 'Female', 'meena.rao@college.edu', 'Mathematics', 9123456789),
+(3,'Ravi', 'Sharma', 'Male', 'ravi.sharma@college.edu', 'Physics', 9898989898),
+(4,'Sunita', 'Verma', 'Female', 'sunita.verma@college.edu', 'Chemistry', 9012345678),
+(5,'Ajay', 'Patel', 'Male', 'ajay.patel@college.edu', 'English', 9001122334),
+(6,'Kavita', 'Naik', 'Female', 'kavita.naik@college.edu', 'Biology', 9123454321),
+(7,'Suresh', 'Reddy', 'Male', 'suresh.reddy@college.edu', 'History', 9898123456),
+(8,'Priya', 'Joshi', 'Female', 'priya.joshi@college.edu', 'Commerce', 9776677889),
+(9,'Vikash', 'Singh', 'Male', 'vikash.singh@college.edu', 'Economics', 8888999900),
+(10,'Neha', 'Pillai', 'Female', 'neha.pillai@college.edu', 'Political Science', 9345678901);
+
+--RETRIVING DATA FROM TEACHERS TABLE
+SELECT * FROM TEACHERS;
+
+--Inserting values in to the COURSE Table
+INSERT INTO COURSE(Course_id,Teacher_id,Course_Name,Credits)
+VALUES(101, 1, 'Data Structures', 4),
+(102, 2, 'Linear Algebra', 3),
+(103, 3, 'Quantum Physics', 4),
+(104, 4, 'Inorganic Chemistry', 3),
+(105, 5, 'British Poetry', 2),
+(106, 6, 'Genetics', 4),
+(107, 7, 'Modern Indian History', 3),
+(108, 8, 'Business Law', 3),
+(109, 9, 'Microeconomics', 3),
+(110, 10, 'Public Policy', 2);
+
+--RETRIVING DATA FROM COURSE TABLE
+SELECT * FROM COURSE;
+
+--Inserting values in to the ENROLLEMENTS Table
+INSERT INTO ENROLLEMENTS(Enrollement_id,Student_id,Teacher_id, Enroll_Date)
+VALUES(201, 1, 1, '01-12-2024'),
+(202, 2, 3, '12-02-2024'),
+(203, 3, 2, '12-03-2024'),
+(204, 4, 5, '12-04-2024'),
+(205, 5, 4, '12-05-2024'),
+(206, 6, 6, '12-06-2024'),
+(207, 7, 7, '12-07-2024'),
+(208, 8, 9, '12-08-2024'),
+(209, 9, 8, '12-09-2024'),
+(210, 10, 10, '12-10-2024');
+
+--RETRIVING DATA FROM ENROLLEMENTS TABLE
+SELECT * FROM ENROLLEMENTS;
+
+--Inserting values in to the GRADES Table
+INSERT INTO GRADES(Grade_id,Enrollement_id,Grade)
+VALUES(301, 201, 'A'),
+(302, 202, 'B'),
+(303, 203, 'A'),
+(304, 204, 'C'),
+(305, 205, 'B'),
+(306, 206, 'A'),
+(307, 207, 'D'),
+(308, 208, 'B'),
+(309, 209, 'C'),
+(310, 210, 'A');
+
+--RETRIVING DATA FROM GRADES TABLE
+SELECT * FROM GRADES;
