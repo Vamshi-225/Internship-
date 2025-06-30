@@ -1,0 +1,171 @@
+--DROP DATABASE IF EXISTS CUSTOMERS
+DROP DATABASE IF EXISTS CUSTOMERS;
+
+--CREATE DATABASE CUSTOMERS
+CREATE DATABASE CUSTOMERS;
+
+--DROP TABLE OF CUSTOMERS1
+DROP TABLE CUSTOMERS1;
+
+--CREATE TABLE CUSTPMERS
+CREATE TABLE CUSTOMERS1(
+Customer_id INT PRIMARY KEY,
+First_Name VARCHAR(100),
+Last_Name VARCHAR(100),
+Email VARCHAR(100),
+Phone VARCHAR(10),
+City VARCHAR(100),
+Postal_Code INT
+);
+
+--DROP TABLE OF ORDERS1
+DROP TABLE ORDERS1;
+
+--CREATE TABLE ORDERS1
+CREATE TABLE ORDERS1(
+Order_id INT PRIMARY KEY,
+Customer_id INT REFERENCES CUSTOMERS1(Customer_id),
+Order_Date DATE,
+Total_Amount DECIMAL(10,2),
+Status VARCHAR(100),
+Payment_method VARCHAR(100)
+);
+
+--INSERTING DATA IN CUSTOMERS1
+INSERT INTO CUSTOMERS1(Customer_id,First_Name,Last_Name,Email,Phone,City,Postal_Code)
+VALUES(1, 'John', 'Smith', 'john.smith@email.com', '6551234567', 'New York', '10001'),
+(2, 'Emily', 'Johnson', 'emily.j@email.com', '9552345678', 'Los Angeles', '90001'),
+(3, 'Michael', 'Williams', 'michael.w@email.com', '8553456789', 'Chicago', '60601'),
+(4, 'Sarah', 'Brown', 'sarah.b@email.com', '7554567890', 'Houston', '77001'),
+(5, 'David', 'Jones', 'david.j@email.com', '9555678901', 'Phoenix', '85001'),
+(6, 'Jessica', 'Garcia', 'jessica.g@email.com', '8556789012', 'Philadelphia', '19101'),
+(7, 'Robert', 'Miller', 'robert.m@email.com', '7557890123', 'San Antonio', '78201'),
+(8, 'Jennifer', 'Davis', 'jennifer.d@email.com', '9558901234', 'San Diego', '92101'),
+(9, 'Thomas', 'Rodriguez', 'thomas.r@email.com', '9559012345', 'Dallas', '75201'),
+(10, 'Lisa', 'Martinez', 'lisa.m@email.com', '7550123456', 'San Jose', '95101'),
+(11, 'Daniel', 'Hernandez', 'daniel.h@email.com', '8551234567', 'Austin', '73301'),
+(12, 'Michelle', 'Lopez', 'michelle.l@email.com', '9552345678', 'Jacksonville', '32099'),
+(13, 'Charles', 'Gonzalez', 'charles.g@email.com', '8553456789', 'Fort Worth', '76101'),
+(14, 'Amanda', 'Wilson', 'amanda.w@email.com', '7554567890', 'Columbus', '43085'),
+(15, 'Christopher', 'Anderson', 'chris.a@email.com', '6555678901', 'Charlotte', '28201'),
+(16, 'Ashley', 'Thomas', 'ashley.t@email.com', '7556789012', 'San Francisco', '94101'),
+(17, 'Matthew', 'Taylor', 'matthew.t@email.com', '8557890123', 'Indianapolis', '46201'),
+(18, 'Stephanie', 'Lee', 'stephanie.l@email.com', '9558901234', 'Seattle', '98101'),
+(19, 'Andrew', 'Perez', 'andrew.p@email.com', '8559012345', 'Denver', '80201'),
+(20, 'Nicole', 'Moore', 'nicole.m@email.com', '7550123456', 'Washington', '20001'),
+(21, 'Joshua', 'Jackson', 'joshua.j@email.com', '6551234567', 'Boston', '02101'),
+(22, 'Melissa', 'Martin', 'melissa.m@email.com', '8552345678', 'El Paso', '79901'),
+(23, 'Kevin', 'White', 'kevin.w@email.com', '9553456789', 'Nashville', '37201'),
+(24, 'Rebecca', 'Harris', 'rebecca.h@email.com', '7554567890', 'Detroit', '48201'),
+(25, 'Brian', 'Clark', 'brian.c@email.com', '9555678901', 'Oklahoma City', '73101');
+
+--RETRIVING DATA FROM TABLE CUSTOMERS1
+SELECT * FROM CUSTOMERS1;
+
+--INSERTING DATA IN ORDERS1
+INSERT INTO ORDERS1(Order_id,Customer_id,Order_Date,Total_Amount,Status,Payment_method)
+VALUES(1001, 1, '2023-01-15', 125.99, 'Delivered', 'Credit Card'),
+(1002, 1, '2023-03-22', 89.50, 'Shipped', 'PayPal'),
+(1003, 2, '2023-02-10', 45.25, 'Delivered', 'Credit Card'),
+(1004, 2, '2023-04-05', 210.75, 'Processing', 'Debit Card'),
+(1005, 3, '2023-01-30', 78.40, 'Delivered', 'Credit Card'),
+(1006, 3, '2023-05-12', 156.20, 'Shipped', 'PayPal'),
+(1007, 4, '2023-03-08', 92.10, 'Delivered', 'Debit Card'),
+(1008, 4, '2023-06-18', 320.45, 'Processing', 'Credit Card'),
+(1009, 5, '2023-02-14', 65.99, 'Delivered', 'PayPal'),
+(1010, 5, '2023-05-30', 178.30, 'Shipped', 'Credit Card'),
+(1011, 6, '2023-01-22', 42.75, 'Delivered', 'Debit Card'),
+(1012, 6, '2023-04-15', 95.60, 'Cancelled', 'Credit Card'),
+(1013, 7, '2023-03-01', 110.25, 'Delivered', 'Credit Card'),
+(1014, 7, '2023-06-10', 230.00, 'Shipped', 'PayPal'),
+(1015, 8, '2023-02-05', 88.90, 'Delivered', 'Debit Card'),
+(1016, 8, '2023-05-22', 145.75, 'Processing', 'Credit Card'),
+(1017, 9, '2023-01-18', 56.40, 'Delivered', 'PayPal'),
+(1018, 9, '2023-04-30', 198.20, 'Shipped', 'Credit Card'),
+(1019, 10, '2023-03-12', 75.30, 'Delivered', 'Debit Card'),
+(1020, 10, '2023-06-25', 265.90, 'Processing', 'Credit Card'),
+(1021, 11, '2023-02-20', 112.50, 'Delivered', 'Credit Card'),
+(1022, 11, '2023-05-15', 89.99, 'Shipped', 'PayPal'),
+(1023, 12, '2023-01-25', 34.75, 'Delivered', 'Debit Card'),
+(1024, 12, '2023-04-18', 152.40, 'Cancelled', 'Credit Card'),
+(1025, 13, '2023-03-05', 67.80, 'Delivered', 'Credit Card'),
+(1026, 13, '2023-06-20', 210.25, 'Shipped', 'PayPal'),
+(1027, 14, '2023-02-15', 98.60, 'Delivered', 'Debit Card'),
+(1028, 14, '2023-05-28', 176.90, 'Processing', 'Credit Card'),
+(1029, 15, '2023-01-10', 54.25, 'Delivered', 'PayPal'),
+(1030, 15, '2023-04-22', 132.75, 'Shipped', 'Credit Card'),
+(1031, 16, '2023-03-18', 87.40, 'Delivered', 'Debit Card'),
+(1032, 16, '2023-06-15', 245.60, 'Processing', 'Credit Card'),
+(1033, 17, '2023-02-08', 76.90, 'Delivered', 'Credit Card'),
+(1034, 17, '2023-05-10', 168.25, 'Shipped', 'PayPal'),
+(1035, 18, '2023-01-20', 43.50, 'Delivered', 'Debit Card'),
+(1036, 18, '2023-04-25', 187.90, 'Cancelled', 'Credit Card'),
+(1037, 19, '2023-03-15', 115.75, 'Delivered', 'Credit Card'),
+(1038, 19, '2023-06-28', 92.40, 'Shipped', 'PayPal'),
+(1039, 20, '2023-02-12', 68.30, 'Delivered', 'Debit Card'),
+(1040, 20, '2023-05-20', 154.80, 'Processing', 'Credit Card'),
+(1041, 21, '2023-01-28', 79.99, 'Delivered', 'PayPal'),
+(1042, 21, '2023-04-10', 201.50, 'Shipped', 'Credit Card'),
+(1043, 22, '2023-03-22', 56.75, 'Delivered', 'Debit Card'),
+(1044, 22, '2023-06-30', 134.20, 'Processing', 'Credit Card'),
+(1045, 23, '2023-02-18', 102.40, 'Delivered', 'Credit Card'),
+(1046, 23, '2023-05-25', 88.90, 'Shipped', 'PayPal'),
+(1047, 24, '2023-01-15', 47.25, 'Delivered', 'Debit Card'),
+(1048, 24, '2023-04-20', 176.60, 'Cancelled', 'Credit Card'),
+(1049, 25, '2023-03-10', 94.75, 'Delivered', 'Credit Card'),
+(1050, 25, '2023-06-22', 212.30, 'Shipped', 'PayPal');
+
+--RETRIVING DATA FROM TABLE ORDERS1
+SELECT * FROM ORDERS1;
+
+--PERFORMING JOINS
+--INNER JOIN
+SELECT 
+CUSTOMERS1.CUSTOMER_ID,
+CUSTOMERS1.First_Name,
+ORDERS1.ORDER_DATE
+FROM 
+CUSTOMERS1
+INNER JOIN
+ORDERS1
+ON
+CUSTOMERS1.CUSTOMER_ID=ORDERS1.CUSTOMER_ID;
+
+--LEFT JOIN
+SELECT 
+CUSTOMERS1.FIRST_NAME,
+ORDERS1.ORDER_ID
+FROM
+ORDERS1
+LEFT JOIN
+CUSTOMERS1
+ON
+CUSTOMERS1.CUSTOMER_ID=ORDERS1.CUSTOMER_ID;
+
+
+--RIGHT JOIN
+SELECT 
+CUSTOMERS1.CITY,
+ORDERS1.PAYMENT_METHOD
+FROM
+ORDERS1
+RIGHT JOIN
+CUSTOMERS1
+ON
+CUSTOMERS1.CUSTOMER_ID = ORDERS1.CUSTOMER_ID;
+
+
+
+--FULL JOIN
+SELECT 
+CUSTOMERS1.FIRST_NAME,
+ORDERS1.PAYMENT_METHOD
+FROM
+CUSTOMERS1
+FULL JOIN
+ORDERS1
+ON
+CUSTOMERS1.CUSTOMER_ID = ORDERS1.CUSTOMER_ID;
+
+
+
