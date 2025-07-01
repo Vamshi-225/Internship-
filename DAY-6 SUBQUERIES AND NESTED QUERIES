@@ -1,0 +1,190 @@
+--DROP DATABASE ORGANIZATION
+DROP DATABASE IF EXISTS ORGANIZATION;
+
+--CREATE DATABASE ORGANIZATION
+CREATE DATABASE ORGANIZATION;
+
+
+--DROP TABLE DEPARTMENT1 
+DROP TABLE DEPARTMENT1;
+
+--CREATE TABLE DEPARTMENT1
+CREATE TABLE DEPARTMENT1(
+Dept_id INT UNIQUE,
+Dept_name VARCHAR(100) PRIMARY KEY,
+City VARCHAR(100),
+Phone BIGINT,
+Email VARCHAR(50)
+);
+
+--DROP TABLE EMPLOYEE1 
+DROP TABLE EMPLOYEE1;
+
+--CREATE TABLE EMPLOYEE1
+CREATE TABLE EMPLOYEE1(
+Emp_id INT UNIQUE,
+Emp_name VARCHAR(100),
+Dept_name VARCHAR(100) references department1(dept_name),
+Salary DECIMAL(10,2)
+);
+
+
+--DROP TABLE DEPARTMENT1 
+DROP TABLE DEPARTMENT1;
+
+--CREATE TABLE DEPARTMENT1
+CREATE TABLE DEPARTMENT1(
+Dept_id INT UNIQUE,
+Dept_name VARCHAR(100) PRIMARY KEY,
+City VARCHAR(100)
+phone BIGINT,
+Email VARCHAR(50)
+);
+
+
+--INSERT DATA INTO TABLE DEPARTMENT1
+INSERT INTO DEPARTMENT1(Dept_id,Dept_name,phone,email)
+VALUES(1, 'HR', '9123456780', 'hr@company.com'),
+(2, 'IT', '8023456789', 'it@company.com'),
+(3, 'Finance', '9234567890', 'finance@company.com'),
+(4, 'Marketing', '7045678901', 'marketing@company.com'),
+(5, 'Operations', '8956789012', 'operations@company.com'),
+(6, 'Legal', '7867890123', 'legal@company.com'),
+(7, 'Support', '9778901234', 'support@company.com'),
+(8, 'R&D', '799012345', 'rnd@company.com'),
+(9, 'Logistics', '7190123456', 'logistics@company.com'),
+(10, 'Design', '9801234567', 'design@company.com'),
+(11, 'Sales', '9712345678', 'sales@company.com'),
+(12, 'QA', '8923456789', 'qa@company.com'),
+(13, 'Admin', '8934567890', 'admin@company.com'),
+(14, 'Procurement', '9645678901', 'procurement@company.com'),
+(15, 'Training', '8556789012', 'training@company.com');
+
+
+--RETRIVING DATA FROM DEPARTMENT1
+SELECT * FROM  DEPARTMENT1;
+
+
+--INSERTING DATA INTO TABLE EMPLOYEE1
+INSERT INTO EMPLOYEE1(Emp_id,Emp_name,Dept_name,Salary)
+VALUES(1, 'Aarav Mehta', 'HR', 45500.00),
+(2, 'Bhavana Reddy', 'IT', 60750.00),
+(3, 'Chetan Iyer', 'Finance', 52900.00),
+(4, 'Divya Patel', 'Marketing', 48120.00),
+(5, 'Eshan Verma', 'Operations', 63750.00),
+(6, 'Farah Khan', 'Legal', 47300.00),
+(7, 'Gaurav Singh', 'Support', 55220.00),
+(8, 'Harini Das', 'R&D', 50110.00),
+(9, 'Ishaan Nair', 'Logistics', 61500.00),
+(10, 'Juhi Rao', 'Design', 49150.00),
+(11, 'Karan Malhotra', 'Sales', 53840.00),
+(12, 'Lavanya Joshi', 'QA', 51230.00),
+(13, 'Manoj Tiwari', 'Admin', 46270.00),
+(14, 'Nisha Ghosh', 'Procurement', 49760.00),
+(15, 'Omkar Sharma', 'Training', 62340.00),
+(16, 'Pranav Desai', 'HR', 44200.00),
+(17, 'Ritika Nair', 'IT', 62400.00),
+(18, 'Sahil Reddy', 'Finance', 54620.00),
+(19, 'Tanvi Bhatia', 'Marketing', 49250.00),
+(20, 'Uday Mehra', 'Operations', 65000.00),
+(21, 'Varsha Kapoor', 'Legal', 45900.00),
+(22, 'Yashwant Roy', 'Support', 56100.00),
+(23, 'Zoya Khan', 'R&D', 51750.00),
+(24, 'Abhay Joshi', 'Logistics', 60300.00),
+(25, 'Bhavya Shah', 'Design', 47680.00),
+(26, 'Charan Singh', 'Sales', 55200.00),
+(27, 'Diksha Menon', 'QA', 50990.00),
+(28, 'Eklavya Soni', 'Admin', 47350.00),
+(29, 'Fatima Sheikh', 'Procurement', 49500.00),
+(30, 'Girish Yadav', 'Training', 63400.00),
+(31, 'Hema Raj', 'HR', 44900.00),
+(32, 'Imran Ali', 'IT', 61800.00),
+(33, 'Jaya Sinha', 'Finance', 53110.00),
+(34, 'Keshav Rao', 'Marketing', 48840.00),
+(35, 'Lata Iyer', 'Operations', 64520.00),
+(36, 'Mohit Kumar', 'Legal', 46830.00),
+(37, 'Naina Das', 'Support', 55800.00),
+(38, 'Om Prakash', 'R&D', 52200.00),
+(39, 'Pooja Bhatt', 'Logistics', 61190.00),
+(40, 'Rahul Dubey', 'Design', 48700.00);
+
+
+--RETRIVING DATA FROM DEPARTMENT1
+SELECT * FROM  DEPARTMENT1;
+
+--RETRIVE DATA FROM EMPLOYEE1
+SELECT * FROM EMPLOYEE1;
+
+
+--QUERIES
+
+SELECT AVG(SALARY) FROM EMPLOYEE1;  --53481.750000000000
+
+SELECT * FROM EMPLOYEE1
+WHERE SALARY>53481.750000000000;
+
+SELECT *         --outer query/main query
+FROM EMPLOYEE1
+WHERE Salary > (SELECT AVG(SALARY)FROM EMPLOYEE1);--sub query
+
+--Scalar sub query
+--it always written in 1row and 1column.
+select e
+from employee1 e
+join
+(select avg(salary) sal from employee1)avg_sal
+on e.salary>avg_sal.sal;
+
+select e.*
+from employee1 e
+join
+(select avg(salary) sal from employee1)avg_sal
+on salary>avg_sal.sal;
+
+--multiple row subquery
+--subquery which returns multiple column and multiple row
+--subquery which return only 1 column and multiple rows
+/*QUESTION: FIND THE EMPLOYEES WHO EARNS THE HIGHEST SALARY IN EACH DEPARTMENT*/
+
+SELECT  MAX(SALARY)
+FROM EMPLOYEE1;
+
+
+SELECT DEPT_NAME,max(SALARY)
+FROM EMPLOYEE1
+GROUP BY DEPT_NAME;
+
+
+SELECT DEPT_NAME,min(SALARY)
+FROM EMPLOYEE1
+GROUP BY DEPT_NAME;
+
+
+select * from employee1
+where (dept_name,salary)in(SELECT DEPT_NAME,max(SALARY)
+							FROM EMPLOYEE1
+							GROUP BY DEPT_NAME);
+
+--MIN SAL
+SELECT * FROM EMPLOYEE1
+WHERE(DEPT_NAME,SALARY) IN (SELECT DEPT_NAME,min(SALARY)
+							FROM EMPLOYEE1
+							GROUP BY DEPT_NAME);
+
+--single column, multiple row subquery
+/*QUESTION:FIND THT DEPARTMENT WHO DO NOT HAVE ANY EMPLOYEES*/
+SELECT *
+FROM DEPARTMENT1
+WHERE DEPT_NAME NOT IN (SELECT DISTINCT DEPT_NAME FROM EMPLOYEE1);
+
+SELECT DISTINCT DEPT_NAME FROM EMPLOYEE1;
+
+--correleated subquery
+--A subquery which is related to the outer query.
+/*QUESTION : FIND THE EMPLOYEES IN EACH DEPARTMENT WHO EARN MORE THAN THE AVERAGE SALARY IN THAT DEPARTMENT*/
+
+SELECT *
+FROM EMPLOYEE1
+WHERE SALARY>(SELECT AVG(SALARY)
+			  FROM EMPLOYEE1
+			  );
