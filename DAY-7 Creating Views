@@ -17,6 +17,8 @@ PASSWORD 'RUDHRA';
 
 --HERE IT IS ACCESS
 GRANT SELECT ON STUDENT TO RUDHRA;
+--SECURITY QUERY
+SELECT * FROM STUDENT;
 
 --CREATE OR REPLACE VIEWS
 --cannot change name of view column "address" to "add".
