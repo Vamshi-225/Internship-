@@ -1,0 +1,65 @@
+CREATE DATABASE INVENTORY;
+
+drop table products_9;
+CREATE TABLE PRODUCTS_9(
+PRODUCT_CODE INT,
+PRODUCT_NAME VARCHAR(100),
+PRICE DECIMAL(10,2),
+QUANTITY_REMAINING INT,
+QUANTITY_SOLD INT
+);
+
+INSERT INTO PRODUCTS_9(PRODUCT_CODE,PRODUCT_NAME,PRICE,QUANTITY_REMAINING,QUANTITY_SOLD)
+VALUES(1,'iPhone 13 Pro Max',100000,5,195);
+
+select * from products_9;
+
+drop table sales_09;
+create table sales_09(
+order_id int,
+order_date date,
+product_code int,
+quantity_order int,
+sale_price decimal(10,2)
+);
+
+insert into sales_09(order_id,order_date,product_code,quantity_order,sale_price)
+values(1,'2022-10-10',1,100,120000),
+(2,'2022-01-20',1,50,60000),
+(3,'2022-02-05',1,45,540000);
+
+select * From sales_09;
+
+
+--CREATING PROCEDURE
+CREATE OR REPLACE PROCEDURE pr_buy_products()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    -- Match the data types used in the tables
+    v_product_code  INT;             -- <-- INTEGER instead of VARCHAR(20)
+    v_price         NUMERIC(10,2);   -- good for money values
+BEGIN
+    /* 1. Fetch code & price for the desired product */
+    SELECT product_code, price
+      INTO v_product_code, v_price     -- variables inherit the column types
+      FROM products_9
+     WHERE product_name = 'iPhone 13 Pro Max';
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Product % not found', 'iPhone 13 Pro Max';
+    END IF;
+
+    /* 2. Record the sale */
+    INSERT INTO sales_09 (order_date, product_code, quantity_order, sale_price)
+    VALUES (CURRENT_DATE, v_product_code, 1, v_price);  -- no cast needed
+
+    /* 3. Update inventory */
+    UPDATE products_9
+       SET quantity_remaining = quantity_remaining - 1,
+           quantity_sold      = quantity_sold + 1
+     WHERE product_code = v_product_code;
+
+    RAISE NOTICE 'Product sold!';
+END;
+$$;
