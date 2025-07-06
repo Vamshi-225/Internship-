@@ -63,3 +63,10 @@ BEGIN
     RAISE NOTICE 'Product sold!';
 END;
 $$;
+
+
+select * from products_9;
+select * From sales_09;
+
+--calling procedure
+call pr_buy_products();
